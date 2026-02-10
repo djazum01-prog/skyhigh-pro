@@ -1,0 +1,7 @@
+{
+  "name": "SkyHigh Aviator Pro",
+  "description": "A high-stakes, real-time multiplier crash game featuring advanced flight physics simulations, betting mechanics, and a Gemini-powered flight analyst.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

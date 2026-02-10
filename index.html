@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyHigh Aviator Pro | Tactical Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --glass-bg: rgba(11, 14, 17, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --neon-rose: #e11d48;
+            --neon-indigo: #6366f1;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #030405;
+            color: #ffffff;
+            margin: 0;
+            overflow: hidden;
+            letter-spacing: -0.01em;
+        }
+
+        .mono { font-family: 'JetBrains+Mono', monospace; }
+
+        /* Glassmorphism Classes */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+        /* Key Animations */
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        .scanline-overlay::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, transparent, rgba(99, 102, 241, 0.05), transparent);
+            height: 100px;
+            animation: scanline 8s linear infinite;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        @keyframes glitch {
+            0% { clip-path: inset(80% 0 0 0); }
+            10% { clip-path: inset(10% 0 50% 0); }
+            20% { clip-path: inset(40% 0 20% 0); }
+            100% { clip-path: inset(80% 0 0 0); }
+        }
+
+        .crash-glitch { animation: glitch 0.2s infinite; }
+
+        .text-glow-rose { text-shadow: 0 0 15px rgba(225, 29, 72, 0.6); }
+        .text-glow-indigo { text-shadow: 0 0 15px rgba(99, 102, 241, 0.6); }
+
+        /* Pressurized Button Effect */
+        .btn-press:active {
+            transform: scale(0.96) translateY(2px);
+            filter: brightness(0.9);
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.40.0",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root" class="scanline-overlay h-screen overflow-hidden"></div>
+</body>
+</html>
